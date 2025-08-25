@@ -1,9 +1,15 @@
+"use client";
+
+import { useAuth } from "@/hooks/useAuth";
+import AuthView from "@/components/auth/AuthView";
+import NotesView from "@/components/notes/NotesView";
+
 export default function Home() {
+  const { user } = useAuth();
+
   return (
-    <main className="min-h-screen bg-white flex items-center justify-center">
-      <h1 className="text-black text-4xl font-light">
-        notes_frontend is being generated
-      </h1>
+    <main className="main p-4 lg:p-6">
+      {!user ? <AuthView /> : <NotesView />}
     </main>
   );
 }
